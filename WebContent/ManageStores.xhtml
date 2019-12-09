@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+<h:head>
+	<title>Manage Stores</title>
+</h:head>
+
+  <f:metadata>
+  <f:event type="preRenderView" 
+      listener="#{storeController.loadStores()}"/>
+  </f:metadata>
+  <h:outputStylesheet library="css" name="tables.css"/>
+  
+<h:body>
+	<h3>Welcome to Manage Stores!</h3>
+	<button>Add Store</button>
+	<h:dataTable value="#{storeController.stores}" var="s"
+  		headerClass="table-header"
+		rowClasses="table-odd-row,table-even-row">
+
+	<h:column>
+ 	  <f:facet name="header">Store ID</f:facet>
+ 	  #{s.id}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Store Name</f:facet>
+ 	  #{s.name}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Date Founded</f:facet>
+ 	  #{s.founded}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Actions</f:facet>
+ 	  <h:form><h:commandLink value="Show Products" action="index"/> <h:commandLink value=" Delete" action="index"/></h:form>
+	</h:column>
+
+	</h:dataTable>
+	
+	<h:form>
+	<h:commandLink value="Return Home" action="index"/>
+	</h:form>
+
+  </h:body>
+</html>
