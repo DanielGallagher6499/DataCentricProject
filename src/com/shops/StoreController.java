@@ -29,6 +29,7 @@ public class StoreController {
 		}
 	}
 
+	//=====Load Store=====
 	public void loadStores() {
 		System.out.println("In loadstores()");
 		try {
@@ -39,23 +40,36 @@ public class StoreController {
 		}
 	}
 	
+	//=====Delete Store=====
 	public void deleteStore(Store s) {
 		try {
 			dao.deleteStore(s.getId());
-		} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+		} catch (SQLIntegrityConstraintViolationException e) {
+			FacesMessage message = 
+					new FacesMessage("Error: Store " + s.name + " has not been deleted from the MySQL DB , as it contains products!");
+					FacesContext.getCurrentInstance().addMessage(null, message);
+		} catch (CommunicationsException e) {
+			FacesMessage message = 
+					new FacesMessage("Error: Can't communicate with DB");
+					FacesContext.getCurrentInstance().addMessage(null, message);
+		}catch (Exception e) {
+			FacesMessage message = 
+					new FacesMessage("Error: " + e.getMessage());
+					FacesContext.getCurrentInstance().addMessage(null, message);
+
+			e.printStackTrace();
+		}
 }
 	
+	//=====Add Store=====
 	public String addStore(Store s) {
 		System.out.println(s.getName() + " " + s.getFounded());
 		try {
 			dao.addStore(s);
-			return "index";
+			return "ManageStores";
 		} catch (SQLIntegrityConstraintViolationException e) {
 			FacesMessage message = 
-					new FacesMessage("Error: Store ID already exists");
+					new FacesMessage("Error: Store " + s.name + " already exists!");
 					FacesContext.getCurrentInstance().addMessage(null, message);
 		} catch (CommunicationsException e) {
 			FacesMessage message = 

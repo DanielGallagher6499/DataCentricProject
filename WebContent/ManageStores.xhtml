@@ -15,6 +15,7 @@
   <h:outputStylesheet library="css" name="tables.css"/>
   
 <h:body>
+	<h:messages globalOnly="true"/>
 	<h3>Welcome to Manage Stores!</h3>
 	<h:form><h:commandLink value="Add Store" action="addStore"/></h:form>
 	<h:dataTable value="#{storeController.stores}" var="s"
@@ -38,7 +39,7 @@
 	
 	<h:column>
  	  <f:facet name="header">Actions</f:facet>
- 	  <h:form><h:commandLink value="Show Products" action="index"/><h:commandLink value=" Delete" action="#{storeController.deleteStore(s)}"/></h:form>
+ 	  <h:form><h:commandLink value="Show Products" action="#{storeProductController.loadStoreProducts(s.id)}"/><h:commandLink value=" Delete" action="#{storeController.deleteStore(s)}"/></h:form>
 	</h:column>
 
 	</h:dataTable>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+<h:head>
+	<title>Manage Store Products</title>
+</h:head>
+
+  <h:outputStylesheet library="css" name="tables.css"/>
+  
+<h:body>
+	<h3>Store/Product Details!</h3>
+	<h:dataTable value="#{storeProductController.storeProducts}" var="sp"
+  		headerClass="table-header"
+		rowClasses="table-odd-row,table-even-row">
+
+	<h:column>
+ 	  <f:facet name="header">Store ID</f:facet>
+ 	  #{sp.sid}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Store Name</f:facet>
+ 	  #{sp.storeName}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Product ID</f:facet>
+ 	  #{sp.pid}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Product Name</f:facet>
+ 	  #{sp.productName}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Price</f:facet>
+ 	  #{sp.price}
+	</h:column>
+	</h:dataTable>
+	
+	<h:form>
+	<h:commandLink value="Home " action="index"/>
+	<h:commandLink value=" Stores" action="ManageStores"/>
+	</h:form>
+
+  </h:body>
+  </html>

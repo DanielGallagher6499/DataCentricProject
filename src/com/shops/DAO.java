@@ -127,5 +127,37 @@ public class DAO {
 		myStmt.setInt(1, id);
 		myStmt.execute();	
 	}
+	
+	//Load Store Products
+	public ArrayList<StoreProduct> loadStoreProducts(int id) throws Exception {
+		
+		Connection myConn = null;
+		Statement myStmt = null;
+		ResultSet myRs = null;
+		
+		myConn = mysqlDS.getConnection();
+
+		String sql = "select s.*,p.* from store as s left join product as p on p.sid=s.id where id=" + id;
+
+		myStmt = myConn.createStatement();
+
+		myRs = myStmt.executeQuery(sql);
+		
+		ArrayList<StoreProduct> StoreProducts = new ArrayList<StoreProduct>();
+
+		// process result set
+		while (myRs.next()) {
+			StoreProduct sp = new StoreProduct();
+			sp.setSid(myRs.getInt("id"));
+			sp.setStoreName(myRs.getString("name"));
+			sp.setFounded(myRs.getString("founded"));
+			sp.setPid(myRs.getInt("pid"));
+			sp.setProductName(myRs.getString("prodName"));
+			sp.setPrice(myRs.getDouble("price"));
+			System.out.println(sp.storeName);
+			StoreProducts.add(sp);
+		}
+		return StoreProducts;
+	}
 }
 
