@@ -30,7 +30,7 @@ public class StoreController {
 	}
 
 	public void loadStores() {
-		System.out.println("In loadproducts()");
+		System.out.println("In loadstores()");
 		try {
 			stores = dao.loadStores();
 		} catch (Exception e) {
@@ -39,14 +39,23 @@ public class StoreController {
 		}
 	}
 	
-	public String addProduct(Store s) {
-		System.out.println(s.getId() + " " + s.getName());
+	public void deleteStore(Store s) {
+		try {
+			dao.deleteStore(s.getId());
+		} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+	
+	public String addStore(Store s) {
+		System.out.println(s.getName() + " " + s.getFounded());
 		try {
 			dao.addStore(s);
 			return "index";
 		} catch (SQLIntegrityConstraintViolationException e) {
 			FacesMessage message = 
-					new FacesMessage("Error: Product ID already exists");
+					new FacesMessage("Error: Store ID already exists");
 					FacesContext.getCurrentInstance().addMessage(null, message);
 		} catch (CommunicationsException e) {
 			FacesMessage message = 

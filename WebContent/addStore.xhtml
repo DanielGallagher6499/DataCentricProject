@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<head>
+		<title>Add Store Page</title>
+	</head>
+	
+	<body>
+	<h:messages globalOnly="true"/>
+	<h:form>
+		Store Name: <h:inputText value="#{store.name}"/><br/>
+		Founded: <h:inputText value="#{store.founded}">
+		</h:inputText>
+		
+		<h:commandButton value = "OK" action="#{storeController.addStore(store)}"/>
+	</h:form>
+	</body>
+</html>

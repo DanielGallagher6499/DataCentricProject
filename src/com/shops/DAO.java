@@ -63,11 +63,11 @@ public class DAO {
 		ResultSet myRs = null;
 		
 		myConn = mysqlDS.getConnection();
-		String sql = "insert into product values (?, ?)";
+		String sql = "insert into store values (?, ?, ?)";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, store.getId());
 		myStmt.setString(2, store.getName());
-		myStmt.setString(2, store.getFounded());
+		myStmt.setString(3, store.getFounded());
 		myStmt.execute();			
 	}
 	
@@ -110,6 +110,19 @@ public class DAO {
 		
 		myConn = mysqlDS.getConnection();
 		String sql = "delete from product where pid = ?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, id);
+		myStmt.execute();	
+	}
+	
+	//Delete Store
+	public void deleteStore (int id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		myConn = mysqlDS.getConnection();
+		String sql = "delete from store where id = ?";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, id);
 		myStmt.execute();	
