@@ -4,23 +4,25 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 	
-	<head>
+	<h:head>
+		<meta charset="ISO-8859-1"></meta>
 		<title>Add Store Page</title>
-	</head>
+	</h:head>
+	
+	<h:outputStylesheet library="css" name="tables.css"/>
+	<h:outputStylesheet library="css" name="styles.css"/>
 	
 	<body>
 	<h:messages globalOnly="true"/>
 	<h:form>
-		Store Name: <h:inputText value="#{store.name}" id="name" required="true" requiredMessage="Name is mandatory"/>
-		<br></br>
-		<h:message for="name"/>
-		
+		Store Name: <h:inputText value="#{store.name}" id="name" required="true" requiredMessage="ERROR: name is mandatory!"/><br/>
+		<h:message for="name" class="error"/>
 		<br></br>
 		<br></br>
-		Founded: <h:inputText value="#{store.founded}" id="founded" required="true" requiredMessage="Founded is mandatory">
-		</h:inputText>
 		<br></br>
-		<h:message for="founded"/>
+		Founded: <h:inputText value="#{store.founded}" id="founded" required="true" requiredMessage="ERROR: founded is mandatory!"/><br/>
+		<h:message for="founded" class="error"/>
+		<br></br>
 		<br></br>
 		<br></br>
 		<h:commandButton value = "Add" action="#{storeController.addStore(store)}"/>
