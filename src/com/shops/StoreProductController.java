@@ -28,6 +28,10 @@ public class StoreProductController {
 		}
 	}
 	
+	
+	/* ======================================================================================================
+	 * Load Store Products
+	 * ====================================================================================================== */
 	public String loadStoreProducts(int sp) {
 		System.out.println("In load products()");
 		try {
@@ -40,6 +44,9 @@ public class StoreProductController {
 		return null;
 	}
 	
+	/* ======================================================================================================
+	 * Return Array List
+	 * ====================================================================================================== */
 	public ArrayList<StoreProduct> getStoreProducts(){
 		return storeProducts;
 	}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core">
+  
+  <!-- This is the manage head offices page of the application -->
+  <!-- This page allows you to see the head offices of each shop and the store's ID -->
+  
+  <h:head>
+    <title>Manage Head Offices</title>
+  </h:head>
+  
+    <f:metadata>
+  <f:event type="preRenderView" 
+      listener="#{officesController.loadOffices()}"/>
+  </f:metadata>
+  
+  <h:body>
+  	<h:form>
+		<h:commandButton value ="Add Head Office" action="addOffice"/> 
+  		
+  		<h:dataTable value="#{officesController.offices}" var="o"
+  			headerClass = "table-header"
+  			rowClasses="table-add-row, table-even-row" >
+  			<h:outputStylesheet library="css" name="tables.css"/>
+  			
+  			<h:column>
+  				<f:facet name="header">Store ID</f:facet>
+  				#{o.storeID}
+  				</h:column>
+  				
+  			<h:column>
+  				<f:facet name="header">Location</f:facet>
+  				#{o.location}
+  				</h:column>
+  				
+  			</h:dataTable>
+  			
+  			<h:commandButton action="index" value="Home"/>
+  			
+  	</h:form>
+  	</h:body>
+  	</html>

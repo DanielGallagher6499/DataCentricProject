@@ -28,6 +28,10 @@ public class ProductController {
 			e.printStackTrace();
 		}
 	}
+	
+	/* ======================================================================================================
+	 * Load Products Function
+	 * ====================================================================================================== */
 
 	public void loadProducts() {
 		System.out.println("In loadproducts()");
@@ -39,6 +43,9 @@ public class ProductController {
 		}
 	}
 	
+	/* ======================================================================================================
+	 * Delete Products Function
+	 * ====================================================================================================== */
 	public void deleteProduct(Products p) {
 		try {
 			dao.deleteProduct(p.getPid());
@@ -47,7 +54,10 @@ public class ProductController {
 		e.printStackTrace();
 	}
 	}
-
+	
+	/* ======================================================================================================
+	 * Returned Array List
+	 * ====================================================================================================== */
 	public ArrayList<Products> getProducts() {
 		return products;
 	}

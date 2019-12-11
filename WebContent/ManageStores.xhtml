@@ -4,6 +4,9 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 	
+	<!-- This is the manage store page of the application -->
+	<!-- This allows you to see all stores listed and to be able to delete them -->
+	
 <h:head>
 	<title>Manage Stores</title>
 </h:head>
@@ -17,7 +20,7 @@
 <h:body>
 	<h:messages globalOnly="true"/>
 	<h3>Welcome to Manage Stores!</h3>
-	<h:form><h:commandLink value="Add Store" action="addStore"/></h:form>
+	<h:form><h:commandButton value="Add Store" action="addStore"/></h:form>
 	<h:dataTable value="#{storeController.stores}" var="s"
   		headerClass="table-header"
 		rowClasses="table-odd-row,table-even-row">
@@ -45,7 +48,7 @@
 	</h:dataTable>
 	
 	<h:form>
-	<h:commandLink value="Return Home" action="index"/>
+	<h:commandButton value="Return Home" action="index"/>
 	</h:form>
 
   </h:body>

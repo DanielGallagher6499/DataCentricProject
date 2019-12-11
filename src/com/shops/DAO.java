@@ -28,7 +28,9 @@ public class DAO {
 		mysqlDS = (DataSource) context.lookup(jndiName);
 	}
 	
-	//load stores 
+	/* ======================================================================================================
+	 * Load Stores Function
+	 * ====================================================================================================== */
 	public ArrayList<Store> loadStores() throws Exception {
 		
 		Connection myConn = null;
@@ -56,7 +58,9 @@ public class DAO {
 		return stores;
 	}
 	
-	//Add store function
+	/* ======================================================================================================
+	 * Add store function
+	 * ====================================================================================================== */
 	public void addStore(Store store) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -71,7 +75,9 @@ public class DAO {
 		myStmt.execute();			
 	}
 	
-	//loading the Products for products page
+	/* ======================================================================================================
+	 * LOading products from products page
+	 * ====================================================================================================== */
 	public ArrayList<Products> loadProducts() throws Exception {
 		
 		Connection myConn = null;
@@ -102,7 +108,9 @@ public class DAO {
 		return products;
 	}
 	
-	//Delete Products 
+	/* ======================================================================================================
+	 * Delete products function
+	 * ====================================================================================================== */
 	public void deleteProduct (int id) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -115,7 +123,9 @@ public class DAO {
 		myStmt.execute();	
 	}
 	
-	//Delete Store
+	/* ======================================================================================================
+	 * Delete store function
+	 * ====================================================================================================== */
 	public void deleteStore (int id) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -128,7 +138,9 @@ public class DAO {
 		myStmt.execute();	
 	}
 	
-	//Load Store Products
+	/* ======================================================================================================
+	 * Load store products
+	 * ====================================================================================================== */
 	public ArrayList<StoreProduct> loadStoreProducts(int id) throws Exception {
 		
 		Connection myConn = null;
